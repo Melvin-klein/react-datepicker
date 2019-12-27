@@ -18,10 +18,6 @@ const Datepicker = props => {
 
     useEffect(() => {
         props.onChange(selectedDate, dimension);
-    }, [selectedDate]);
-
-    const setContextSelectedDate = date => {
-        setSelectedDate(date);
 
         switch (dimension) {
             case YEAR_DIMENSION:
@@ -33,6 +29,10 @@ const Datepicker = props => {
             default:
                 setDimension(DAY_DIMENSION);
         }
+    }, [selectedDate]);
+
+    const setContextSelectedDate = date => {
+        setSelectedDate(date);
     }
 
     const View = props => {
