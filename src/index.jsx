@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import DayView from './components/DayView';
@@ -15,6 +15,10 @@ const Datepicker = props => {
     const [dimension, setDimension] = useState(props.defaultDimension);
 
     selectedDate.locale(props.locale);
+
+    useEffect(() => {
+        props.onChange(selectedDate, dimension);
+    }, [selectedDate]);
 
     const setContextSelectedDate = date => {
         setSelectedDate(date);
@@ -62,14 +66,16 @@ Datepicker.propTypes = {
     defaultValue: PropTypes.instanceOf(moment),
     defaultDimension: PropTypes.string,
     locale: PropTypes.string,
-    customize: PropTypes.object
+    customize: PropTypes.object,
+    onChange: PropTypes.func
 }
 
 Datepicker.defaultProps = {
     defaultValue: moment(),
     defaultDimension: "days",
     locale: 'en',
-    customize: {}
+    customize: {},
+    onChange: () => {}
 }
 
 export default Datepicker;
