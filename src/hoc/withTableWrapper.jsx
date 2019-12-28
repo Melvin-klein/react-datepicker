@@ -3,7 +3,7 @@ import React from 'react';
 const withTableWrapper = View => {
     return props => {
         return (
-            <table>
+            <table style={{ width: "100%"}}>
                 <tbody>
                     <View {...props} />
                 </tbody>
