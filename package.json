@@ -1,6 +1,6 @@
 {
   "name": "evener-datepicker",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A simple and easy customizable react datepicker package.",
   "main": "dist/index.js",
   "repository": "https://github.com/Melvin-klein/react-datepicker.git",
