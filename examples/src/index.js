@@ -8,7 +8,8 @@ const classes = {
     dimensionText: 'text-lg px-2 hover:text-purple-500',
     dimensionTextActive: 'bg-red-500 border-b-2 border-blue-500',
     daysLabel: 'py-2 text-center',
-    viewItem: 'text-blue-500 hover:bg-yellow-500 p-4 cursor-pointer text-center',
+    viewItem: 'text-blue-500 cursor-pointer text-center',
+    viewItemText: 'hover:border-blue-500 border-b-2 border-transparent p-4'
 }
 
 const App = () => (

@@ -55,7 +55,7 @@ const DayView = props => {
                                             {
                                                 
                                                 current.format('M') === selectedDate.format('M') && current.isoWeekday() === dayIndex + 1 ? (
-                                                    <td className={props.customize.viewItem} onClick={() => selectDate(current.format('D'))}>{current.format('DD')}</td>
+                                                    <td className={props.customize.viewItem} onClick={() => selectDate(current.format('D'))}><div className={props.customize.viewItemText}>{current.format('DD')}</div></td>
                                                 ) : (
                                                     <td></td>
                                                 )
