@@ -24,7 +24,7 @@ const MonthView = props => {
                                     date.add(1, 'months');
 
                                     return (
-                                        <td key={y + "." + x} className={props.customize.viewItem} onClick={() => selectDate(current.format('M'))}>{current.format('MMM')}</td>
+                                        <td key={y + "." + x} className={props.customize.viewItem} onClick={() => selectDate(current.format('M'))}><div className={props.customize.viewItemText}>{current.format('MMM')}</div></td>
                                     );
                                 })
                             }

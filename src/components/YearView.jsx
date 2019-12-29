@@ -25,7 +25,7 @@ const YearView = props => {
                                     date.add(1, 'years');
 
                                     return (
-                                        <td key={y + "." + x} className={props.customize.viewItem} onClick={() => selectDate(current.format('YYYY'))}>{current.format('YYYY')}</td>
+                                        <td key={y + "." + x} className={props.customize.viewItem} onClick={() => selectDate(current.format('YYYY'))}><div className={props.customize.viewItemText}>{current.format('YYYY')}</div></td>
                                     );
                                 })
                             }
