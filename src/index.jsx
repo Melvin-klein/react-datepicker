@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, useRef} from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import DayView from './components/DayView';
@@ -13,22 +13,27 @@ const YEAR_DIMENSION = 'years';
 const Datepicker = props => {
     const [selectedDate, setSelectedDate] = useState(props.defaultValue);
     const [dimension, setDimension] = useState(props.defaultDimension);
+    const firstRender = useRef(true);
 
     selectedDate.locale(props.locale);
 
     useEffect(() => {
         props.onChange(selectedDate, dimension);
 
-        switch (dimension) {
-            case YEAR_DIMENSION:
-                setDimension(MONTH_DIMENSION);
-                break;
-            case MONTH_DIMENSION:
-                setDimension(DAY_DIMENSION);
-                break;
-            default:
-                setDimension(DAY_DIMENSION);
+        if (!firstRender.current) {
+            switch (dimension) {
+                case YEAR_DIMENSION:
+                    setDimension(MONTH_DIMENSION);
+                    break;
+                case MONTH_DIMENSION:
+                    setDimension(DAY_DIMENSION);
+                    break;
+                default:
+                    setDimension(DAY_DIMENSION);
+            }
         }
+
+        firstRender.current = false;
     }, [selectedDate]);
 
     const setContextSelectedDate = date => {

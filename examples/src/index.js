@@ -12,7 +12,7 @@ const classes = {
 }
 
 const App = () => (
-    <Datepicker customize={classes} locale="fr" defaultDimension="months" onChange={(date, dimension) => console.log(date, dimension)} />
+    <Datepicker customize={classes} locale="fr" defaultDimension="months" onChange={(date, dimension) => console.log('OnChnage : ', date, dimension)} />
 );
 
 render(<App />, document.getElementById("root"));

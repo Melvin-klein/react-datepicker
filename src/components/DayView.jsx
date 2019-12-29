@@ -9,7 +9,7 @@ const DayView = props => {
     moment.locale(props.locale);
 
     const firstDayOfMonth = selectedDate.clone().startOf('month');
-    const nbWeeksInCurrentMonth = Math.ceil((selectedDate.daysInMonth() + parseInt(firstDayOfMonth.isoWeekday())) / 7);
+    const nbWeeksInCurrentMonth = Math.ceil((selectedDate.daysInMonth() + parseInt(firstDayOfMonth.isoWeekday() - 1)) / 7);
 
     const selectDate = dayIndex => {
         setSelectedDate(selectedDate.clone().set('date', dayIndex));
@@ -51,7 +51,16 @@ const DayView = props => {
                                     }
 
                                     return (
-                                        <td key={weekIndex + "." + dayIndex} className={props.customize.viewItem} onClick={() => selectDate(current.format('D'))}>{current.format('M') === selectedDate.format('M') && current.isoWeekday() === dayIndex + 1 ? current.format('DD') : ''}</td>
+                                        <React.Fragment key={weekIndex + "." + dayIndex}>
+                                            {
+                                                
+                                                current.format('M') === selectedDate.format('M') && current.isoWeekday() === dayIndex + 1 ? (
+                                                    <td className={props.customize.viewItem} onClick={() => selectDate(current.format('D'))}>{current.format('DD')}</td>
+                                                ) : (
+                                                    <td></td>
+                                                )
+                                            }
+                                        </React.Fragment>
                                     );
                                 })
                             }
